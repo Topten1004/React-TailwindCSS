@@ -15,7 +15,6 @@ const LoginPage = () => {
     const { isAuthenticated, loading, error } = useSelector((state) => state.auth)
 
     useEffect(() => {
-        console.log("isAuthenticated:::::", isAuthenticated);
         if(isAuthenticated == true)
         {
             navigate('/dashboard');

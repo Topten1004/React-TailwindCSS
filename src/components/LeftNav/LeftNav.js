@@ -2,11 +2,19 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { logout } from '../../redux/authSlice';
 import { useDispatch } from 'react-redux';
+import useAuth from '../../hook/useAuth';
+import { useEffect } from 'react';
 
 const LeftNav = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch()
     
+    const { requireAuth } = useAuth();
+
+    useEffect(() => {
+      requireAuth();
+    }, []);
+
     const handleLogout = () => {
         // Dispatch the logout action to reset authentication state
         dispatch(logout());
