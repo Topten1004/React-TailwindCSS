@@ -1,14 +1,16 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { logout } from '../../redux/authSlice';
+import { useDispatch } from 'react-redux';
 
 const LeftNav = () => {
     const navigate = useNavigate();
-
+    const dispatch = useDispatch()
+    
     const handleLogout = () => {
-        // Remove the accessToken cookie
-        document.cookie = 'accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-
-        // Redirect to the first page
+        // Dispatch the logout action to reset authentication state
+        dispatch(logout());
+        // Redirect to the login page
         navigate('/');
     };
 
